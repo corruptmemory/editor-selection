@@ -15,6 +15,7 @@ A comparative analysis of local-install, GUI-capable code editors for an experie
 | **Zed** | The Speed Demon | Native performance + open agent standards; ecosystem still maturing |
 | **JetBrains** | The Engineering Workstation | Best debugger, best database tools, heaviest footprint |
 | **Emacs** | The Sovereign Hacker | Unmatched extensibility and SQL workflow; AI requires assembly |
+| **[Google Antigravity IDE](https://antigravity.google/product)** | The Agent Dispatcher | Agent-first architecture with browser control; Google backing but abandonment risk |
 | **Sublime Text** | The Lightweight Veteran | Still the fastest editor; AI story is effectively nonexistent |
 
 ## Constraints
@@ -44,6 +45,7 @@ Three AI agents independently researched and analyzed the same question:
 
 ```
 claude/          -- Claude's analysis (comparative, data-heavy, cross-editor matrices)
+                    Includes addendum: antigravity-analysis.md (Google Antigravity deep dive)
 codex/           -- Codex's analysis (editorial, opinionated, recommendation-focused)
 gemini/          -- Gemini's analysis (per-editor deep dives + strategy synthesis)
 ```
@@ -52,7 +54,7 @@ gemini/          -- Gemini's analysis (per-editor deep dives + strategy synthesi
 
 - **Want the quick answer?** Start with `codex/editor-bakeoff-2026-03.md` -- it reads like a senior engineer's frank recommendation memo. Scroll to "Specific recommendation for your situation" at the bottom.
 
-- **Want comparative data?** Read `claude/editor-analysis.md` -- organized by criterion with cross-editor matrices, quantitative benchmarks, and a tiered rating system. Sections 10-12 (External Agent Normalizer, SQL Decision Reframed, Windsurf) were added after reviewing the other agents' work.
+- **Want comparative data?** Read `claude/editor-analysis.md` -- organized by criterion with cross-editor matrices, quantitative benchmarks, and a tiered rating system. Sections 10-12 (External Agent Normalizer, SQL Decision Reframed, Windsurf) were added after reviewing the other agents' work. See also `claude/antigravity-analysis.md` for a follow-up deep dive on Google's Antigravity IDE.
 
 - **Want per-editor deep dives?** Browse `gemini/` for individual editor files. **Caveat:** Gemini's research contains fabricated data points (inflated extension counts, non-existent version numbers, invented features and source URLs). Cross-reference claims before relying on them.
 
@@ -67,6 +69,7 @@ All three agents independently converged on several points:
 5. **Sublime Text is not a serious contender** if AI capability matters
 6. **Zed is the most interesting performance-first challenger** but its ecosystem and Linux GPU support need more time
 7. **VS Code is the lowest-risk starting point** for anyone evaluating a move from Emacs
+8. **Google Antigravity is architecturally novel** (agent-first with browser control) but doesn't displace the top recommendations due to opaque pricing, Google's abandonment track record, and no human-driven SQL workflow
 
 ## Where the Agents Disagreed
 
@@ -117,6 +120,7 @@ Another key takeaway is that editor-native AI is no longer the whole story.
 4. Try `Zed` if tactile speed is a major priority.
 
 For the full Codex memo, see `codex/editor-bakeoff-2026-03.md`.
+For a focused, source-backed comparison of Google Antigravity vs the other evaluated editors, see `codex/antigravity-comparative-research-2026-03-28.md`.
 
 ## Gemini Contribution
 
@@ -144,4 +148,3 @@ This is my strategic synthesis after researching the "Challengers" and "AI-Nativ
 3.  **If you want a professional workstation for Go + SQL:** **JetBrains** is the most robust choice.
 
 For my detailed deep-dives and the full strategy synthesis, see the `gemini/` directory. For an overview of my agentic approach, see `GEMINI.md`.
-

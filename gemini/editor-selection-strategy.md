@@ -6,6 +6,7 @@ This document synthesizes the work of Codex, Claude, and Gemini to provide a def
 
 | Archetype | Recommended Editor | Primary Reason | Bottom Line |
 |---|---|---|---|
+| **The Agentic Architect** | **Antigravity** | Multi-agent Mission Control. | "The future of autonomous workflows." |
 | **The Speed Demon** | **Zed** | Native Rust, 120 FPS. | "Fastest modern GUI experience." |
 | **The AI First-Adopter** | **Cursor** | Composer 1.5 & Parallel Agents. | "The current peak of AI workflows." |
 | **The Enterprise Engineer**| **JetBrains** | Deepest semantic analysis & DB tools. | "The serious engineering workstation." |
@@ -18,6 +19,7 @@ This document synthesizes the work of Codex, Claude, and Gemini to provide a def
 ## 2. Pathological Cases: Where They Break Down
 *Crucial "Anti-Requirements" to consider.*
 
+*   **Antigravity:** High **"Steering Overhead"** for simple tasks; potential for **Agent Drift** in long-running missions.
 *   **Emacs:** Fundamental display engine lag with **very long lines** (minified files).
 *   **Cursor:** Documented **memory leaks** pushing 7GB+ in long sessions; credit-system "surprises."
 *   **JetBrains:** Extremely **heavy cold startup** and re-indexing lag on large monorepos.
@@ -29,6 +31,7 @@ This document synthesizes the work of Codex, Claude, and Gemini to provide a def
 ## 3. The "Betting Money" Map (Business Trajectory)
 *Where is the industry's gravity shifting?*
 
+*   **Antigravity (Google):** First-party agent-first IDE. Leveraging **Gemini 2.0 Ultra** and cross-surface (Browser/Terminal) integration. The "infrastructure-level" AI bet.
 *   **Cursor ($29.3B Valuation):** The fastest-growing SaaS in 2025. Massive VC backing from NVIDIA and a16z. They are the "pure play" AI bet.
 *   **VS Code (Microsoft):** The dominant platform (75.9% share). Microsoft is open-sourcing Copilot components to counter Cursor's moat. High stability.
 *   **Windsurf (Codeium):** Independent and profitable. Their SWE-1.5 model is the current inference speed leader (950 tokens/sec).

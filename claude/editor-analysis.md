@@ -2,7 +2,7 @@
 
 *Compiled March 2026. All data sourced from web research, official documentation, community surveys, and financial reporting.*
 
-**Editors analyzed:** Cursor, Zed, Sublime Text, VS Code, Emacs, JetBrains IDEs
+**Editors analyzed:** Cursor, Zed, Sublime Text, VS Code, Emacs, JetBrains IDEs, Google Antigravity
 
 ---
 
