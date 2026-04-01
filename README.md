@@ -12,7 +12,7 @@ A comparative analysis of local-install, GUI-capable code editors for an experie
 |--------|-----------|---------------|
 | **Cursor** | The AI Maximalist | Most aggressive AI integration; pay for it in RAM and dollars |
 | **VS Code** | The Safe Default | Broadest ecosystem, strong AI, lowest risk |
-| **Zed** | The Speed Demon | Native performance + open agent standards; ecosystem still maturing |
+| **Zed** | The Speed Demon (AI Ambitions) | Native performance + best external agent integration (ACP); default UX now AI-forward, community split |
 | **JetBrains** | The Engineering Workstation | Best debugger, best database tools, heaviest footprint |
 | **Emacs** | The Sovereign Hacker | Unmatched extensibility and SQL workflow; AI requires assembly |
 | **[Google Antigravity IDE](https://antigravity.google/product)** | The Agent Dispatcher | Agent-first architecture with browser control; Google backing but abandonment risk |
@@ -67,7 +67,7 @@ All three agents independently converged on several points:
 3. **Emacs's SQL workflow is genuinely best-in-class** -- no other editor replicates the buffer-to-REPL fluidity
 4. **External agents (Claude Code, Codex CLI, Aider) reduce the importance of editor-native AI** -- this helps Emacs, Zed, and JetBrains more than it helps Cursor
 5. **Sublime Text is not a serious contender** if AI capability matters
-6. **Zed is the most interesting performance-first challenger** but its ecosystem and Linux GPU support need more time
+6. **Zed is the most interesting performance-first challenger** but has pivoted hard toward AI-first UX (Sept 2025 token-based pricing, Jan 2026 ACP Registry); free tier lost hosted AI prompts; a fork (Gram) stripped all AI out in protest; `disable_ai: true` lets you reclaim the lean editor
 7. **VS Code is the lowest-risk starting point** for anyone evaluating a move from Emacs
 8. **Google Antigravity is architecturally novel** (agent-first with browser control) but doesn't displace the top recommendations due to opaque pricing, Google's abandonment track record, and no human-driven SQL workflow
 

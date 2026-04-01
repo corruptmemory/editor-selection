@@ -99,7 +99,7 @@
 
 **Sublime Text** has a mature but shrinking ecosystem. Package Control works well, but the community is migrating to VS Code. The 2-3 person team means development is sustainable but not fast.
 
-**Zed** has the smallest ecosystem — ~1,000 extensions — but compensates with extensive built-in features (collaboration, AI, terminal, Git, debugging). Extensions are sandboxed WASM modules: secure and cross-platform by nature, but the Rust/WASM barrier to entry slows ecosystem growth.
+**Zed** has the smallest ecosystem — ~1,000 extensions — but compensates with extensive built-in features (collaboration, AI, terminal, Git, debugging). Extensions are sandboxed WASM modules: secure and cross-platform by nature, but the Rust/WASM barrier to entry slows ecosystem growth. **Update (March 2026):** The ACP Registry launch (January 2026) adds a second ecosystem dimension — installable external agents (Claude Code, Codex CLI, Gemini CLI, etc.) that integrate as first-class citizens, partially compensating for the smaller extension count.
 
 **Cursor** inherits most of VS Code's ecosystem but lost access to Microsoft-proprietary extensions (C/C++, Pylance, C# Dev Kit, Remote Development) in April 2025 when Microsoft blocked non-VS Code editors from the official marketplace.
 
@@ -136,7 +136,7 @@ This is where the real differences emerge:
 
 3. **VS Code + Copilot** — @workspace provides repository-level context. 2x retrieval improvements since September 2025 (8x smaller index, 37.6% better retrieval). Gap with Cursor is narrowing.
 
-4. **Zed** — context from open files and project structure, but no semantic indexing like Cursor or JetBrains.
+4. **Zed** — context from open files and project structure, but no semantic indexing like Cursor or JetBrains. **Update:** Zeta2 (March 2026) added LSP-based context retrieval to edit predictions — the model now sees types and definitions of symbols around the cursor, a significant improvement though still not full codebase indexing.
 
 5. **Emacs** — primarily manual context management. gptel lets you include specific files/regions. No automatic project-wide indexing. The Claude Code terminal integration is the strongest AI workflow in Emacs.
 
@@ -158,7 +158,7 @@ This is where the real differences emerge:
 An important consideration: **Claude Code is a terminal-based tool that works independently of your editor**. This means:
 
 - In **Emacs**: First-class integration via claude-code.el, eat/vterm terminal backends. Multiple dedicated packages. Featured at EmacsConf 2025.
-- In **Zed**: Native ACP protocol support. Claude Code runs inside Zed as a first-class agent.
+- In **Zed**: Native ACP protocol support (January 2026 ACP Registry launch). Claude Code, Codex CLI, Gemini CLI, and others run inside Zed as first-class agents via the open ACP standard, co-developed with JetBrains. This is Zed's strongest AI differentiator.
 - In **VS Code**: Works in the integrated terminal. MCP integration available.
 - In **JetBrains**: Works in the integrated terminal. Air IDE supports Claude Agent via ACP.
 - In **Cursor**: Works in the integrated terminal, but competes with Cursor's own agent.
@@ -173,7 +173,7 @@ The implication: **if you rely heavily on Claude Code, your editor choice matter
 - **VS Code + Copilot**: Closing fast. Multi-agent orchestration, cloud coding agent, open-sourcing Copilot. Microsoft's distribution advantage is massive.
 
 **Tier 2 — Strong AI, not AI-first:**
-- **Zed**: ACP protocol is forward-thinking. External agent support is excellent. AI features are good and improving rapidly.
+- **Zed**: ACP protocol is forward-thinking and now live (ACP Registry launched January 2026). External agent support is the best of any editor. Zeta2 edit predictions are genuinely good. AI features are now prominent in the default UI — some users feel *too* prominent (see Trajectory section).
 - **JetBrains**: Deep semantic context is unique. Junie + Air show serious AI commitment. Playing catch-up but leveraging unique IDE intelligence.
 
 **Tier 3 — AI-capable with effort:**
@@ -192,7 +192,7 @@ The implication: **if you rely heavily on Claude Code, your editor choice matter
 |--------|------------|------------|-----------|-------------------|
 | Sublime Text | ~$2.75/mo (amortized) | N/A | N/A | **$2.75** |
 | VS Code | Free | Free (limited) | Copilot Pro $10/mo | **$0-$10** |
-| Zed | Free | Free (limited) | Pro $10/mo (or BYOK) | **$0-$10** |
+| Zed | Free | Free (BYOK/external only) | Pro $10/mo (token-based) | **$0-$10+** |
 | Emacs | Free | Free (Ollama) | API costs vary | **$0-$20** |
 | Cursor | Included | N/A | Pro $20/mo | **$20** |
 | JetBrains | ~$15-24/mo (amortized) | AI Free tier | AI Ultimate $20-30/mo | **$15-$54** |
@@ -206,7 +206,7 @@ The implication: **if you rely heavily on Claude Code, your editor choice matter
 | **Zed + BYOK** | $0 + API | $0 + API | $0 + API | **$0 + API** |
 | **Sublime Text (no AI)** | $99 | $0 | $0 | **$99** |
 | **VS Code + Copilot Pro** | $120 | $120 | $120 | **$360** |
-| **Zed Pro** | $120 | $120 | $120 | **$360** |
+| **Zed Pro** | $120 + overages | $120 + overages | $120 + overages | **$360+** (token overages at API price +10%) |
 | **Cursor Pro** | $240 | $240 | $240 | **$720** |
 | **JetBrains All Products + AI Pro** | $289 | $231 | $173 | **$693** |
 | **JetBrains All Products + AI Ultimate** | $529 | $471 | $413 | **$1,413** |
@@ -230,7 +230,7 @@ JetBrains raised prices 11-30% in October 2025. The continuity discount (20% yea
 
 ### Costs Verdict
 
-**Cheapest path to powerful AI editing**: VS Code + Copilot Pro ($10/mo) or Zed Pro ($10/mo). Both offer strong AI at half the price of Cursor.
+**Cheapest path to powerful AI editing**: VS Code + Copilot Pro ($10/mo) or Zed Pro ($10/mo). Both offer strong AI at half the base price of Cursor. **Caveat (updated):** Zed Pro's $10/mo includes only $5 of token credits — heavy users will pay overages at API price +10%. The free tier no longer includes any hosted AI prompts (it had 50/mo previously); free users must BYOK or use external agents.
 
 **Best value if you want it all**: JetBrains All Products Pack ($289/yr first year, dropping to $173/yr by year 3). This includes every IDE + AI Pro. For a polyglot developer, this is hard to beat on capability-per-dollar.
 
@@ -259,11 +259,11 @@ JetBrains raised prices 11-30% in October 2025. The continuity discount (20% yea
 
 **JetBrains hedging intelligently**: Junie CLI (LLM-agnostic, BYOK), Air IDE (agentic development), free tier expansion, GitHub Copilot compatibility. The message: "we won't lock you into our AI, but our IDE intelligence makes any AI better." Fleet's discontinuation shows they're willing to kill things that aren't working.
 
-**Zed playing the long game**: Sequoia backing. ACP protocol co-developed with JetBrains. The bet: performance + open standards will win as AI agents become the primary "users" of editors. The editor needs to be fast because agents generate and process code at machine speed.
+**Zed playing the long game — but identity under stress**: Sequoia backing ($42M+ total). ACP protocol co-developed with JetBrains launched January 2026 with a live registry. The bet: performance + open standards will win as AI agents become the primary "users" of editors. **However**, the aggressive AI pivot has triggered community backlash. Users on HN and GitHub report that core editor polish has stalled while AI features dominate development focus. A fork called **Gram** (March 2026) stripped out all AI, chat, collaboration, and telemetry from Zed, citing onerous ToS requirements and philosophical objections to AI integration. Zed overhauled its ToS the same day Gram went public. The tension: Zed's *technical* direction (ACP, Zeta2, open standards) is excellent, but the *product experience* has shifted from "speed-first editor with optional AI" to "AI-first editor that's also fast." Whether this is a feature or a bug depends on which Zed you fell in love with.
 
 ### Trajectory Assessment
 
-**Rising**: Cursor (explosive), Zed (steady climb), VS Code AI capabilities (Microsoft investing hard)
+**Rising**: Cursor (explosive), Zed (steady climb, but community trust fraying over AI focus), VS Code AI capabilities (Microsoft investing hard)
 
 **Stable**: JetBrains (defending position well), VS Code (base editor)
 
@@ -302,7 +302,7 @@ The question isn't "which is better" — it's "where is the balance point?" Toda
 
 **Cursor** distributes as an AppImage on Linux — functional but clunky compared to native packages. No robust settings sync. If you work across machines, you'll need a manual dotfiles solution.
 
-**Zed** is newest on Windows (October 2025) and has active Linux GPU issues. macOS is the most polished platform. If you primarily use Linux, expect some friction — Vulkan GPU selection problems with Intel iGPUs, and 20-25% CPU usage when the window is visible on GNOME.
+**Zed** shipped Windows support in October 2025 and has been improving it since (SSH remoting, WSL fixes). Linux GPU issues have improved with the migration to wgpu graphics backend, and Wayland screen-sharing now works for collaboration. macOS remains the most polished platform, but the Linux/Windows gap has narrowed significantly by March 2026.
 
 **Sublime Text** is remarkably consistent across platforms — JSON configs are fully portable, and the custom rendering engine ensures identical behavior everywhere.
 
@@ -532,8 +532,8 @@ This analysis focused on the six editors you specified. One notable competitor n
 | **General Ecosystem** | A- (VS Code minus MS) | A+ | C+ (growing) | A- | B+ | B- (declining) |
 | **AI Ecosystem** | A+ | A | B+ | B+ | B- | D |
 | **Cost (value)** | B- | A+ | A+ | B | A+ | A |
-| **Trajectory** | A+ (explosive) | A (dominant) | A- (ascending) | B+ (defending) | C+ (niche stable) | C- (fading) |
-| **Cross-Platform** | B- | A | B (Linux GPU issues) | B+ | B+ (weak Windows) | A- |
+| **Trajectory** | A+ (explosive) | A (dominant) | B+ (ascending, identity tension) | B+ (defending) | C+ (niche stable) | C- (fading) |
+| **Cross-Platform** | B- | A | B+ (Linux/Windows improving) | B+ | B+ (weak Windows) | A- |
 | **Extensibility** | B+ (inherited) | A | B- (small ecosystem) | A- | A+ (unmatched) | B |
 | **Debugger** | B+ (inherited) | B+ | B- (new) | A+ (best) | C+ | C- |
 | **SQL/Database** | C+ | B | D | A+ (DataGrip) | A (REPL workflow) | C |
@@ -548,9 +548,9 @@ Weakest: Memory hungry, no robust config sync, credit system can surprise you, l
 Best for: Polyglot developers, teams, remote development, anyone who values the massive ecosystem. Copilot is comprehensive and Microsoft is investing aggressively.
 Weakest: Electron overhead, not best at anything except ecosystem breadth and remote dev.
 
-**Zed** — *The Speed Demon*
-Best for: Developers who prioritize responsiveness, want external agent integration (Claude Code via ACP), and are willing to tolerate a maturing ecosystem.
-Weakest: Smallest extension ecosystem, Linux GPU issues, no database tooling, newest on Windows.
+**Zed** — *The Speed Demon (Now With AI Ambitions)*
+Best for: Developers who prioritize responsiveness, want the best external agent integration (ACP Registry with Claude Code, Codex CLI, Gemini CLI), and value open standards over vendor lock-in. The `disable_ai: true` setting lets you use it as a pure speed editor.
+Weakest: Default experience is now AI-forward (agent panel prominent, AI model selector in your face on first launch). Free tier lost hosted AI prompts. Smallest extension ecosystem. No database tooling. Community trust fraying — the Gram fork signals real dissatisfaction with the AI-first direction. Token-based billing can surprise heavy users.
 
 **JetBrains** — *The Engineering Workstation*
 Best for: Java/Kotlin, Python, .NET, Go developers who need powerful debugging and database work. Enterprise teams. Developers who value "IDE intelligence."
@@ -574,7 +574,7 @@ Rather than prescribe a single answer, here are decision paths based on prioriti
 **Cursor** or **VS Code + Copilot Pro**. Cursor has deeper AI today; VS Code is closing the gap with Microsoft's backing. VS Code is half the price.
 
 ### If you want AI + speed + open standards:
-**Zed**. Fast, ACP protocol for external agents, BYOK pricing, open source. Accept the smaller ecosystem and Linux GPU caveats.
+**Zed**. Still the fastest modern GUI editor. ACP protocol gives the best external agent integration of any editor. BYOK and `disable_ai: true` let you opt out of the AI-first default. Accept the smaller ecosystem and the fact that the default experience is now AI-forward — you'll need to configure your way out of it rather than opting in.
 
 ### If debugging and database work are critical:
 **JetBrains**. Nothing else comes close for debugging depth and DataGrip's SQL experience. Pair with Claude Code CLI for agent capability.
